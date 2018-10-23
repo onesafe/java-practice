@@ -1,5 +1,7 @@
 package com._onesafe.thread;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by onesafe on 23/10/2018.
  */
@@ -16,7 +18,7 @@ public class TicketWindowRunnable implements Runnable {
             System.out.println(Thread.currentThread() + " 的号码是： " + (index++));
 
             try {
-                Thread.sleep(100);
+                TimeUnit.MILLISECONDS.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
