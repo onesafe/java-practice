@@ -11,16 +11,20 @@ public class TicketWindowRunnable implements Runnable {
 
     private final static int MAX = 50;
 
+    private final static Object MUTEX = new Object();
+
     @Override
     public void run() {
 
-        while(index <= MAX) {
-            System.out.println(Thread.currentThread() + " 的号码是： " + (index++));
+        synchronized (MUTEX) {
+            while(index <= MAX) {
+                System.out.println(Thread.currentThread() + " 的号码是： " + (index++));
 
-            try {
-                TimeUnit.MILLISECONDS.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                try {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
