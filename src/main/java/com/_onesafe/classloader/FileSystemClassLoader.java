@@ -1,8 +1,9 @@
 package com._onesafe.classloader;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
-import java.io.InputStream;
 
 public class FileSystemClassLoader extends ClassLoader {
 
@@ -38,23 +39,34 @@ public class FileSystemClassLoader extends ClassLoader {
                 }
             }
         }
+        return c;
     }
 
     private byte[] getClassData(String classname) {
         String path = rootDir + "/" + classname.replace(".", "/") + ".class";
-
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try (InputStream is = new FileInputStream(path)){
 
-            byte[] buffer = new byte[1024];
-            int temp = 0;
-            while((temp = is.read(buffer)) != -1) {
-                baos.write(buffer, 0, temp);
-            }
-            return baos.toByteArray();
+        try {
+            IOUtils.copy(new FileInputStream(path), baos);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+
+        return baos.toByteArray();
     }
+
+
+//        try (InputStream is = new FileInputStream(path)){
+//
+//            byte[] buffer = new byte[1024];
+//            int temp = 0;
+//            while((temp = is.read(buffer)) != -1) {
+//                baos.write(buffer, 0, temp);
+//            }
+//            return baos.toByteArray();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }
