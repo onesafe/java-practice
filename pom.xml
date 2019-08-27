@@ -11,6 +11,7 @@
     <modules>
         <module>design-patten</module>
         <module>basic</module>
+        <module>tools</module>
     </modules>
 
     <name>practice</name>
