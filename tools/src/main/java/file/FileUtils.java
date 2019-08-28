@@ -3,8 +3,13 @@ package file;
 import com.fasterxml.jackson.core.type.TypeReference;
 import json.SerdesUtils;
 import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.stream.Collectors;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -23,5 +28,13 @@ public class FileUtils {
 
     public static <T> T readContent(String fileName, TypeReference<T> tr) throws Exception {
         return SerdesUtils.deserialize(readContent(fileName), tr);
+    }
+
+    public static String readFileFromResource(String path) throws IOException {
+        ClassPathResource resource = new ClassPathResource(path);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
+        String content = reader.lines().collect(Collectors.joining("\n"));
+        reader.close();
+        return content;
     }
 }
