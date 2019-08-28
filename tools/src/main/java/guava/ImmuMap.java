@@ -1,4 +1,4 @@
-package com._onesafe.guava.collect;
+package guava;
 
 import com.google.common.collect.ImmutableMap;
 
