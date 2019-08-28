@@ -1,4 +1,4 @@
-package com._onesafe.json;
+package json;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
