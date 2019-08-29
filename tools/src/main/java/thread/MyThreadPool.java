@@ -17,7 +17,9 @@ public class MyThreadPool {
 
     private TimeUnit unit = MILLISECONDS;
 
-    private BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>();
+    private int blockingQueue = 20;
+
+    private BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(blockingQueue);
 
     private ThreadFactory threadFactory = Executors.defaultThreadFactory();
 
