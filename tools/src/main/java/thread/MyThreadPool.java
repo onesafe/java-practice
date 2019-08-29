@@ -5,6 +5,7 @@ import java.util.concurrent.*;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 /**
+ *
  * Created by onesafe on 29/08/2019 11:37 AM.
  */
 public class MyThreadPool {
@@ -65,3 +66,15 @@ public class MyThreadPool {
     );
 
 }
+
+
+/**
+从JDK源码可看出，Executors工具类无非是把一些特定参数进行了封装，并提供一些方法供我们调用而已，
+ 我们并不能灵活地填写参数，策略过于简单，不够友好。
+
+CachedThreadPool和ScheduledThreadPool最大线程数为Integer.MAX_VALUE，如果线程无限地创建，会造成OOM异常。
+
+LinkedBlockingQueue基于链表的FIFO队列，是无界的，默认大小是Integer.MAX_VALUE，
+ 因此FixedThreadPool和SingleThreadPool的阻塞队列长度为Integer.MAX_VALUE，
+ 如果此时队列被无限地堆积任务，会造成OOM异常。
+*/
