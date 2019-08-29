@@ -3,5 +3,6 @@ java-practice.iml
 target/
 practice.iml
 tools/tools.iml
-basic/tools.iml
+basic/basic.iml
 design-patten/design-patten.iml
+leetcode/leetcode.iml

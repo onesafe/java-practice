@@ -12,6 +12,7 @@
         <module>design-patten</module>
         <module>basic</module>
         <module>tools</module>
+        <module>leetcode</module>
     </modules>
 
     <name>practice</name>
