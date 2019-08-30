@@ -7,6 +7,8 @@ import java.util.stream.IntStream;
 
 /**
  * Created by onesafe on 30/08/2019 4:35 PM.
+ * FlatMap 能够将流的每个元素, 转换为其他对象的流。
+ * 因此，每个对象可以被转换为零个，一个或多个其他对象，并以流的方式返回。之后，这些流的内容会被放入flatMap返回的流中。
  */
 public class FlatMapTest {
     static class Foo {
