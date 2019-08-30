@@ -9,11 +9,11 @@ import kafka.producer.ProducerConfig;
 /**
  * Created by onesafe on 29/08/2019 5:21 PM.
  */
-public class KafkaProducer {
+public class KafkaProducerDemo01 {
     private final Producer<String, String> producer;
     public final static String TOPIC = "TEST-TOPIC";
 
-    private KafkaProducer(){
+    private KafkaProducerDemo01(){
         Properties props = new Properties();
         //此处配置的是kafka的端口
         props.put("metadata.broker.list", "172.27.129.72:9092");
@@ -52,6 +52,6 @@ public class KafkaProducer {
 
     public static void main( String[] args )
     {
-        new KafkaProducer().produce();
+        new KafkaProducerDemo01().produce();
     }
 }
