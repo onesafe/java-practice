@@ -16,6 +16,7 @@ public class SuppilerNullTest {
         // 如果不为空，最终输出 foo 的值
     }
 
+
     public static <T> Optional<T> resolve(Supplier<T> resolver) {
         try {
             T result = resolver.get();
