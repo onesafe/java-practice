@@ -10,9 +10,9 @@ import org.apache.logging.log4j.Logger;
  * Created by onesafe on 02/09/2019 11:45 AM.
  */
 @RestController
-public class Log4j2Test {
+public class Log4j2Controller {
 
-    private static final Logger LOG = LogManager.getLogger(Log4j2Test.class);
+    private static final Logger LOG = LogManager.getLogger(Log4j2Controller.class);
 
     @GetMapping("/testlog4j2")
     public String test() {
