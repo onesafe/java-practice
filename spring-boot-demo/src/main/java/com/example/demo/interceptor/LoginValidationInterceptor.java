@@ -1,6 +1,5 @@
 package com.example.demo.interceptor;
 
-import com.example.demo.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -17,13 +16,7 @@ public class LoginValidationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("preHandler ...");
         log.info("preHandler ...");
-        User  user = (User) request.getSession().getAttribute("user");
-        if (user == null) {
-            response.sendRedirect("login.html");
-            return false;
-        }
         return true;
     }
 
