@@ -1,0 +1,2 @@
+# 指定刚刚创建的 OnesafeAutoConfiguration 的全路径名
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.onesafe.OnesafeAutoConfiguration
