@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
 /**
  * Created by onesafe on 02/09/2019 5:14 PM.
  */
-@Component
+//@Component  // 不使用kafka的时候，注释掉，以免影响服务启动
 @Slf4j
 public class KafkaProvider {
 

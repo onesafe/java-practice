@@ -2,12 +2,11 @@ package com.example.demo.kafka;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by onesafe on 02/09/2019 5:20 PM.
  */
-@Component
+//@Component // 不使用kafka的时候，注释掉，以免影响服务启动
 @Slf4j
 public class KafkaConsumer {
 
