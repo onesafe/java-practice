@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * 225. 用队列实现栈
+ * LeetCode 225. 用队列实现栈
  *
  */
 public class MyStack {

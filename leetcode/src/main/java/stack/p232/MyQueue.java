@@ -3,7 +3,7 @@ package stack.p232;
 import java.util.Stack;
 
 /**
- * 232. 用栈实现队列
+ * LeetCode 232. 用栈实现队列
  *
  */
 class MyQueue {

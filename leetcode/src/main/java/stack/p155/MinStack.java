@@ -2,6 +2,10 @@ package stack.p155;
 
 import java.util.Stack;
 
+/**
+ * LeetCode 155. 最小栈
+ *
+ */
 class MinStack {
 
     private Stack<Integer> data_stack;
