@@ -11,6 +11,7 @@ public class Solution {
         Stack<Integer> stack = new Stack<>();
         StringBuilder sb = new StringBuilder();
 
+        // 核心逻辑
         for (int i=0; i<num.length(); i++) {
             int n = num.charAt(i) - '0';
 
@@ -24,6 +25,7 @@ public class Solution {
             }
         }
 
+        // 如果栈不空，则仍然可以删除数字
         while (stack.size() != 0 && k > 0) {
             k--;
             stack.pop();
@@ -35,6 +37,11 @@ public class Solution {
             stack.pop();
         }
 
+
+        /*
+               "10"
+               2
+        */
         if ("".equals(sb.toString())) {
             return "0";
         }
