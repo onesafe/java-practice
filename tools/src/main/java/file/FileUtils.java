@@ -1,6 +1,8 @@
 package file;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 import json.SerdesUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.ClassPathResource;
@@ -36,5 +38,11 @@ public class FileUtils {
         String content = reader.lines().collect(Collectors.joining("\n"));
         reader.close();
         return content;
+    }
+
+
+    // use guava
+    public static String readFileFromResourceToString(String path) throws IOException {
+        return Resources.toString(Resources.getResource(path), Charsets.UTF_8);
     }
 }
