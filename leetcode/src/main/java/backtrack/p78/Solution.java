@@ -8,26 +8,19 @@ import java.util.List;
  */
 public class Solution {
 
-    private List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        List<Integer> item = new ArrayList<>();
-
-        bt(nums, 0, item, result);
-        return result;
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        getAns(nums, 0, new ArrayList<>(), ans);
+        return ans;
     }
 
-    private void bt(int[] nums, int i, List<Integer> item, List<List<Integer>> result) {
-        if (i == nums.length) {
-            result.add(item);
-            return;
+    private void getAns(int[] nums, int start, ArrayList<Integer> temp, List<List<Integer>> ans) {
+        ans.add(new ArrayList<>(temp));
+        for (int i = start; i < nums.length; i++) {
+            temp.add(nums[i]);
+            getAns(nums, i + 1, temp, ans);
+            temp.remove(temp.size() - 1);
         }
-
-        // 注意浅拷贝和深拷贝的问题
-        ArrayList<Integer> tmp = new ArrayList<>(item);
-
-        bt(nums, i + 1, tmp, result);
-        item.add(nums[i]);
-        bt(nums, i + 1, item, result);
     }
 
     public static void main(String[] args) {
