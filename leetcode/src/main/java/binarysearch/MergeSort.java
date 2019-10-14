@@ -46,7 +46,9 @@ public class MergeSort {
             mergeSort(nums, mid+1, end);
 
             // 合并
-            merge(nums, start, mid, end);
+            if (nums[mid] > nums[mid+1]) {
+                merge(nums, start, mid, end);
+            }
         }
     }
 
