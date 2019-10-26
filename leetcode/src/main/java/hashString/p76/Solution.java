@@ -1,57 +1,53 @@
 package hashString.p76;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * LeetCode: 76. 最小覆盖子串
  */
 public class Solution {
 
     public String minWindow(String s, String t) {
-        int[] mapSs = new int[128];
-        int[] mapTt = new int[128];
-        String result = "";
-        List<Character> tList = new ArrayList<>();
 
-        for (int i=0; i<t.length(); i++) {
-            mapTt[t.charAt(i)]++;
-            tList.add(t.charAt(i));
+        char[] sChars = s.toCharArray();
+        char[] pChars = t.toCharArray();
+        int[] pMap = new int[128];
+
+        // 考察窗口[i,j-1]
+        int i = 0, j = 0;
+
+        int count = pChars.length;
+        int minLen = s.length() + 1,l = 0,r = 0;
+
+        for (char pChar : pChars) {
+            pMap[pChar]++;
         }
 
-        int windowBegin = 0;
+        while (j < sChars.length) {
 
-        for (int windowEnd=0; windowEnd<s.length(); windowEnd++) {
-            mapSs[s.charAt(windowEnd)]++;
+            //减小计数
+            if (pMap[sChars[j]] > 0) {
+                count--;
+            }
+            pMap[sChars[j]]--;
+            j++;
 
-            while (windowBegin < windowEnd) {
-                char c = s.charAt(windowBegin);
-                if (mapTt[c] == 0) {
-                    windowBegin++;
-                } else if (mapSs[c] > mapTt[c]) {
-                    mapSs[c]--;
-                    windowBegin++;
-                } else {
-                    break;
+            //计数为 0说明区间[i,j-1] 包含 p
+            while (count == 0) {
+
+                //求得一个解
+                if (j - i < minLen) {
+                    minLen = j - i;
+                    l = i;
+                    r = j;
                 }
-            }
+                pMap[sChars[i]]++;
 
-            if (isWindowOk(mapSs, mapTt, tList)) {
-                int windowLen = windowEnd - windowBegin + 1;
-                if ("".equals(result) || result.length() > windowLen) {
-                    result = s.substring(windowBegin, windowEnd+1);
+                // 增加计数
+                if (pMap[sChars[i]] > 0) {
+                    count++;
                 }
+                i++;
             }
         }
-        return result;
-    }
-
-    private boolean isWindowOk(int[] mapSs, int[] mapTt, List<Character> t) {
-        for (Character c : t) {
-            if (mapSs[c] < mapTt[c]) {
-                return false;
-            }
-        }
-        return true;
+        return minLen == s.length() + 1 ? "" : s.substring(l, r);
     }
 }
