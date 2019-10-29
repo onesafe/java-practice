@@ -40,4 +40,41 @@ public class BST {
             }
         }
     }
+
+    // 递归实现查找
+    public boolean findDg(TreeNode node, Integer val) {
+        if (node.val == val) {
+            return true;
+        }
+
+        if (val < node.val) {
+            if (null != node.left) {
+                return findDg(node.left, val);
+            } else {
+                return false;
+            }
+        } else {
+            if (null != node.right) {
+                return findDg(node.right, val);
+            } else {
+                return false;
+            }
+        }
+    }
+
+    // 循环实现查找
+    public boolean findLoop(TreeNode node, Integer val) {
+        while (node != null) {
+            if (node.val == val) {
+                return true;
+            }
+
+            if (node.val < val) {
+                node = node.right;
+            } else {
+                node = node.left;
+            }
+        }
+        return false;
+    }
 }
